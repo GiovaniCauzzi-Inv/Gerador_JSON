@@ -1,0 +1,16 @@
+{
+  "Produto": "ITP 08X80-10C B12 DC SMD COMIL",
+  "CodProduto": "1169",
+  "Gravador": "ST-LINK/V2",
+  "Img_Gravador": "ST Link V2 ISOL.png",
+  "Rastreamento": "true",
+  "BsGravacao": "NA",
+  "SupGravacao": "NA",
+  "Micro": "STM8AF52A",
+  "Tst_State": {
+    "1": "SetupInicial",
+    "2": "ScamGravador",
+    "3": "StartRastreamento",
+    "4": "GravaFirmware"
+  }
+}

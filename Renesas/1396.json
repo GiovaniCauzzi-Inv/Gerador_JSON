@@ -1,0 +1,15 @@
+{
+  "Produto": "INV-16601 S.C.",
+  "CodProduto": "1396",
+  "Gravador": "Renesas E2 Lite",
+  "Img_Gravador": "Renesas E2 Lite.png",
+  "BsGravacao": "NA",
+  "SupGravacao": "NA",
+  "Rastreamento": "true",
+  "Tst_State": {
+    "1": "SetupInicial",
+    "2": "ScamGravador",
+    "3": "StartRastreamento",
+    "4": "GravaFirmware"
+  }
+}
