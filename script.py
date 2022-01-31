@@ -5,7 +5,6 @@ from json import dump
 import json
 import time
 
-
 class JsonManager:
     def __init__(self):
         self.path = dirname(realpath(__file__)) + '/'
@@ -20,12 +19,10 @@ class JsonManager:
         else:
             return False
 
-
 def str_to_raw(s):
     raw_map = {8: r'\b', 7: r'\a', 12: r'\f',
                10: r'\n', 13: r'\r', 9: r'\t', 11: r'\v'}
     return r''.join(i if ord(i) > 32 else raw_map.get(ord(i), i) for i in s)
-
 
 contagemGeral = 0
 contagemRenesas = 0
@@ -37,8 +34,7 @@ contagemStm8af52a8tdx = 0
 contagemFreescale = 0
 contagemMicrochip = 0
 
-start = time.time()
-
+#start = time.time()
 
 with open('produtos_sintetico_barra.csv') as arquivo:
     leituraArquivo = csv.reader(arquivo, delimiter=',')
@@ -70,7 +66,7 @@ with open('produtos_sintetico_barra.csv') as arquivo:
             # print(dadosJsonObj['CodProduto'])
             if __name__ == '__main__':
                 jmanager = JsonManager()
-                jmanager.create_json('renesas/'+codigo+'.json', dadosJsonObj)
+                jmanager.create_json('JSON_Gerados/renesas/'+codigo+'.json', dadosJsonObj)
 
         if firmware.find("esp32") > 0:  # ____________________ESP32____________________
             contagemESP32 += 1
@@ -93,7 +89,7 @@ with open('produtos_sintetico_barra.csv') as arquivo:
             # print(dadosJsonObj['CodProduto'])
             if __name__ == '__main__':
                 jmanager = JsonManager()
-                jmanager.create_json('ESP32/'+codigo+'.json', dadosJsonObj)
+                jmanager.create_json('JSON_Gerados/ESP32/'+codigo+'.json', dadosJsonObj)
 
         if firmware.find("stm8") > 0:  # ____________________STM8____________________
             contagemStm8 += 1
@@ -120,7 +116,7 @@ with open('produtos_sintetico_barra.csv') as arquivo:
                 if __name__ == '__main__':
                     jmanager = JsonManager()
                     jmanager.create_json(
-                        'STM8S003F3/'+codigo+'.json', dadosJsonObj)
+                        'JSON_Gerados/STM8S003F3/'+codigo+'.json', dadosJsonObj)
 
             # 134m2 = stm8af52a8tdx
             if firmware.find("stm8af52a") > 0 or firmware.find("stm8\134m2") > 0:
@@ -145,11 +141,9 @@ with open('produtos_sintetico_barra.csv') as arquivo:
                 # print(dadosJsonObj['CodProduto'])
                 if __name__ == '__main__':
                     jmanager = JsonManager()
-                    jmanager.create_json('STM8AF52A/'+codigo+'.json', dadosJsonObj)
+                    jmanager.create_json('JSON_Gerados/STM8AF52A/'+codigo+'.json', dadosJsonObj)
             
-
-        # ____________________FREESCALE____________________
-        if firmware.find("freescale") > 0 or firmware.find("nxp") > 0 or firmware.find("daq") > 0:
+        if firmware.find("freescale") > 0 or firmware.find("nxp") > 0 or firmware.find("daq") > 0: # ____________________FREESCALE____________________
             contagemFreescale += 1
             dadosJsonObj = {
                 "Produto": ""+str(descricaoSintetica)+"",
@@ -170,10 +164,9 @@ with open('produtos_sintetico_barra.csv') as arquivo:
             # print(dadosJsonObj['CodProduto'])
             if __name__ == '__main__':
                 jmanager = JsonManager()
-                jmanager.create_json('Freescale/'+codigo+'.json', dadosJsonObj)
-
-        # ____________________MICROCHIP____________________
-        if firmware.find("microchip") > 0:
+                jmanager.create_json('JSON_Gerados/Freescale/'+codigo+'.json', dadosJsonObj)
+        
+        if firmware.find("microchip") > 0:# ____________________MICROCHIP____________________
             contagemMicrochip += 1
             micro = firmware.split("/")
             micro = micro[4].upper()
@@ -197,7 +190,7 @@ with open('produtos_sintetico_barra.csv') as arquivo:
             # print(dadosJsonObj['CodProduto'])
             if __name__ == '__main__':
                 jmanager = JsonManager()
-                jmanager.create_json('Microchip/'+codigo+'.json', dadosJsonObj)
+                jmanager.create_json('JSON_Gerados/Microchip/'+codigo+'.json', dadosJsonObj)
 
 
 print("Contagem geral = " + str(contagemGeral))
@@ -208,5 +201,5 @@ print("Contagem STM8S003F3 = " + str(contagemStm8s003f3))
 print("Contagem Stm8af52a = " + str(contagemStm8af52a))
 print("Contagem Freescale = " + str(contagemFreescale))
 print("Contagem Microchip = " + str(contagemMicrochip))
-end = time.time()
-print("Elapsed time: " + str(end - start) + "s")
+#nd = time.time()
+#print("Elapsed time: " + str(end - start) + "s")
